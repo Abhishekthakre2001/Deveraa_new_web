@@ -1,62 +1,38 @@
 document.getElementById('contactForm').addEventListener('submit', function (e) {
+  e.preventDefault();
 
-    document.getElementById('submit_button').style.display="none";
-    document.getElementById('loading_button').style.display="block";
+  // UI loading
+  document.getElementById('submit_button').style.display = "none";
+  document.getElementById('loading_button').style.display = "block";
 
-    console.log("cobatct ")
-    e.preventDefault();
-  
-    // Get form values
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
-    const message = document.getElementById('message').value;
-  
-    // Prepare the API request payload
-    const requestBody = {
-      mailto: "deveraapvt@gmail.com",
-      subject: `New Contact Form Submission from ${name}`,
-      message: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`,
-      username: "deveraapvt@gmail.com",
-      apppassword: "mlvgulnxeshzeoqx",
-      senderName: name,
-    };
+  // Get form values
+  const name = document.getElementById('name').value.trim();
+  const email = document.getElementById('email').value.trim();
+  const message = document.getElementById('message').value.trim();
 
-    console.log("request data",requestBody)
-  
-    // Send the POST request to the API
-    fetch('https://mail.deveraa.com/mail', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(requestBody)
-    })
-      .then(response => {
-        if (response.ok) {
-          // Show success alert using SweetAlert
-          // Swal.fire({
-          //   icon: 'success',
-          //   title: 'Thank you for contacting us!',
-          //   text: 'We will get back to you soon.',
-          // });
-          document.getElementById('submit_button').style.display="block";
-          document.getElementById('loading_button').style.display="none";
-          // Optionally reset the form fields
-          document.getElementById('contactForm').reset();
-        } else {
-          // Handle error
-          throw new Error('Email sending failed');
-        }
-      })
-      .catch(error => {
-        console.error('Error:', error);
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops!',
-          text: 'Something went wrong. Please try again later.',
-        });
-        document.getElementById('submit_button').style.display="block";
-        document.getElementById('loading_button').style.display="none";
-      });
-  });
-  
+  // WhatsApp number (India: 91)
+  const phoneNumber = "919270139519";
+
+  // Create WhatsApp message
+  const whatsappMessage =
+    `*New Contact Form Message from website*
+
+Name: ${name}
+Email: ${email}
+Message: ${message}`;
+
+  // Encode message
+  const encodedMessage = encodeURIComponent(whatsappMessage);
+
+  // WhatsApp URL
+  const whatsappURL = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+
+  // Open WhatsApp
+  window.open(whatsappURL, "_blank");
+
+  // Reset UI
+  document.getElementById('submit_button').style.display = "block";
+  document.getElementById('loading_button').style.display = "none";
+  document.getElementById('contactForm').reset();
+});
+
