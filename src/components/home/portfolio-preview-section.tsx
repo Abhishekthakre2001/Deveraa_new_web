@@ -1,61 +1,66 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
-import { Button, buttonVariants } from "@/components/ui/button";
+import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
-import { ArrowRight } from "lucide-react";
+import Image from "next/image";
 
 const PROJECTS = [
   {
     title: "Global FinTech Platform",
-    industry: "Finance",
+    category: "Financial Technology",
+    description: "A highly secure, scalable payment processing platform handling millions of transactions daily with real-time analytics.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
-    tech: ["Next.js", "Node.js", "PostgreSQL"],
+    tech: ["Next.js", "Node.js", "PostgreSQL", "AWS"],
+    color: "from-blue-500 to-cyan-400"
   },
   {
     title: "AI Healthcare Assistant",
-    industry: "Healthcare",
-    image: "https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&q=80",
-    tech: ["React Native", "Python", "OpenAI"],
+    category: "HealthTech & AI",
+    description: "Intelligent diagnostic assistant utilizing large language models to help doctors analyze patient data rapidly.",
+    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80",
+    tech: ["React Native", "Python", "OpenAI", "GCP"],
+    color: "from-purple-500 to-indigo-400"
   },
   {
     title: "Enterprise E-commerce",
-    industry: "Retail",
+    category: "Retail & Logistics",
+    description: "Headless e-commerce solution with extreme performance, real-time inventory, and AI-driven recommendations.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
-    tech: ["Vue.js", "NestJS", "AWS"],
+    tech: ["Vue.js", "NestJS", "Redis", "Docker"],
+    color: "from-cyan-500 to-teal-400"
   }
 ];
 
 export function PortfolioPreviewSection() {
   return (
-    <section className="py-24 bg-muted/10">
+    <section className="py-32 bg-white dark:bg-slate-950 relative overflow-hidden">
+      
+      {/* Background elements */}
+      <div className="absolute inset-0 bg-grid-pattern opacity-30 pointer-events-none" />
+      <div className="absolute top-0 right-0 w-[500px] h-[500px] bg-blue-500/5 rounded-full blur-[100px] pointer-events-none" />
+      
+      <div className="container mx-auto px-4 sm:px-8 relative z-10">
 
-        {/* Center Heading */}
-        <div className="max-w-7xl mx-auto text-center mb-20">
-          <motion.span
+        <div className="max-w-4xl mx-auto text-center mb-20">
+          <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-5 py-2 text-sm font-medium text-primary"
+            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-semibold text-slate-700 dark:text-slate-300 mb-6 shadow-sm"
           >
-          Our Featured Work
-          </motion.span>
+            Our Featured Work
+          </motion.div>
 
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             viewport={{ once: true }}
-            className="mt-6 text-4xl md:text-6xl font-bold leading-tight"
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white mb-6 leading-tight"
           >
-            Transforming Ideas Into
-            <br />
-
-            <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 bg-clip-text text-transparent">
-              Digital Success Stories
-            </span>
+            Transforming Ideas Into <br />
+            <span className="text-gradient">Digital Success Stories</span>
           </motion.h2>
 
           <motion.p
@@ -63,68 +68,91 @@ export function PortfolioPreviewSection() {
             whileInView={{ opacity: 1 }}
             transition={{ delay: 0.2 }}
             viewport={{ once: true }}
-            className="mt-6 text-lg text-muted-foreground max-w-3xl mx-auto"
+            className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
           >
-       Discover how we've partnered with startups, enterprises, and growing
-    businesses to build scalable web applications, mobile apps, AI-powered
-    platforms, and custom software that deliver measurable results.
+            Discover how we've partnered with forward-thinking organizations to build scalable digital products that deliver measurable business impact.
           </motion.p>
         </div>
-      <div className="container mx-auto px-4 sm:px-8">
-        <div className="flex flex-col md:flex-row md:items-end justify-between mb-16 gap-4">
-          {/* <div className="max-w-2xl">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Featured Work</h2>
-            <p className="text-muted-foreground text-lg">
-              Explore some of our recent projects where we turned complex challenges into elegant digital solutions.
-            </p>
-          </div> */}
-          {/* <Link href="/portfolio" className={buttonVariants({ variant: "outline" })}>
-            View All Projects <ArrowRight className="ml-2 w-4 h-4" />
-          </Link> */}
-        </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid lg:grid-cols-3 gap-8">
           {PROJECTS.map((project, idx) => (
             <motion.div
               key={project.title}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: idx * 0.1 }}
-              whileHover={{ y: -10 }}
-              className="group cursor-pointer"
+              viewport={{ once: true, margin: "-50px" }}
+              transition={{ delay: idx * 0.1, duration: 0.6, type: "spring", bounce: 0.3 }}
+              className="group relative perspective-1000"
             >
-              <Card className="overflow-hidden border-border/50 bg-card">
-                <div className="aspect-video relative overflow-hidden bg-muted">
-                  <div className="absolute inset-0 bg-primary/10 group-hover:bg-transparent transition-colors z-10" />
-                  {/* Note: In a real app, use next/image. Using img here for quick prototyping */}
+              <div className="absolute -inset-0.5 bg-gradient-to-br from-slate-200 to-slate-100 dark:from-slate-800 dark:to-slate-900 rounded-3xl blur opacity-0 group-hover:opacity-100 transition duration-500" />
+              
+              <div className="relative h-full glass-card rounded-3xl overflow-hidden border border-slate-200 dark:border-slate-800 group-hover:border-slate-300 dark:group-hover:border-slate-700 transition-all duration-500 flex flex-col group-hover:-translate-y-2 group-hover:rotate-x-2">
+                
+                {/* Image Container */}
+                <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-slate-900">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity" />
+                  
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
                   <img 
                     src={project.image} 
                     alt={project.title}
-                    className="object-cover w-full h-full group-hover:scale-105 transition-transform duration-500"
+                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700 ease-in-out"
                   />
+                  
                   <div className="absolute top-4 left-4 z-20">
-                    <Badge variant="secondary" className="bg-background/80 backdrop-blur">
-                      {project.industry}
-                    </Badge>
+                    <span className="px-3 py-1 text-xs font-semibold bg-white/90 dark:bg-slate-900/90 backdrop-blur-md text-slate-900 dark:text-white rounded-full shadow-sm">
+                      {project.category}
+                    </span>
+                  </div>
+                  
+                  {/* Floating Action Button */}
+                  <div className="absolute top-4 right-4 z-20 translate-x-4 opacity-0 group-hover:translate-x-0 group-hover:opacity-100 transition-all duration-300">
+                    <button className="w-10 h-10 rounded-full bg-white dark:bg-slate-900 text-slate-900 dark:text-white flex items-center justify-center shadow-lg hover:bg-blue-500 hover:text-white transition-colors">
+                      <ExternalLink size={18} />
+                    </button>
                   </div>
                 </div>
-                <CardContent className="p-6">
-                  <h3 className="text-xl font-bold mb-3 group-hover:text-primary transition-colors">
+
+                {/* Content */}
+                <div className="p-8 flex flex-col flex-grow bg-white dark:bg-slate-900">
+                  <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
                     {project.title}
                   </h3>
-                  <div className="flex flex-wrap gap-2">
+                  
+                  <p className="text-slate-600 dark:text-slate-400 mb-6 flex-grow leading-relaxed">
+                    {project.description}
+                  </p>
+                  
+                  <div className="flex flex-wrap gap-2 mb-6">
                     {project.tech.map(t => (
-                      <span key={t} className="text-xs text-muted-foreground bg-muted px-2 py-1 rounded">
+                      <span key={t} className="text-xs font-medium text-slate-600 dark:text-slate-300 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">
                         {t}
                       </span>
                     ))}
                   </div>
-                </CardContent>
-              </Card>
+
+                  <Link 
+                    href="/portfolio" 
+                    className="inline-flex items-center text-sm font-bold text-slate-900 dark:text-white group/link hover:text-blue-600 dark:hover:text-cyan-400 transition-colors"
+                  >
+                    View Project Details
+                    <ArrowRight className="ml-2 w-4 h-4 group-hover/link:translate-x-1 transition-transform" />
+                  </Link>
+                </div>
+              </div>
             </motion.div>
           ))}
         </div>
+        
+        <div className="mt-16 text-center">
+          <Link 
+            href="/portfolio" 
+            className="inline-flex items-center justify-center h-12 px-8 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-semibold hover:bg-blue-600 dark:hover:bg-cyan-400 hover:text-white transition-colors shadow-lg"
+          >
+            View All Projects
+          </Link>
+        </div>
+
       </div>
     </section>
   );
