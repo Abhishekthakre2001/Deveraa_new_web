@@ -1,4 +1,5 @@
 import { HeroSection } from "@/components/home/hero-section";
+import { ShowcaseSection } from "@/components/home/showcase-section";
 import { TrustedBySection } from "@/components/home/trusted-by-section";
 import { ServicesSection } from "@/components/home/services-section";
 import { IndustriesSection } from "@/components/home/industries-section";
@@ -15,6 +16,7 @@ export default function Home() {
   return (
     <>
       <HeroSection />
+      <ShowcaseSection />
       <TrustedBySection />
       <ServicesSection />
       <IndustriesSection />

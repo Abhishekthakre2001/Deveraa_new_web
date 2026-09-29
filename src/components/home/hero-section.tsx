@@ -6,6 +6,7 @@ import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowRight, Code2, Cpu, Globe, Layout, Smartphone } from "lucide-react";
 import { useRef } from "react";
+import heroImg from "@/app/assets/deveraa-herosection.jpeg";
 
 export function HeroSection() {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -125,53 +126,18 @@ export function HeroSection() {
                 </div>
               </motion.div>
 
-              {/* Main App Window Mockup */}
               <motion.div 
                 initial={{ opacity: 0, scale: 0.9, rotateX: 10, rotateY: -10 }}
                 animate={{ opacity: 1, scale: 1, rotateX: 0, rotateY: 0 }}
                 transition={{ duration: 1, delay: 0.3, type: "spring" }}
-                className="absolute z-10 glass-card rounded-2xl w-[120%] max-w-md h-80 border-t border-white/60 dark:border-white/20 shadow-2xl overflow-hidden"
+                className="absolute z-10 rounded-2xl w-[120%] max-w-lg shadow-2xl overflow-hidden"
               >
-                <div className="h-10 border-b border-slate-200/50 dark:border-slate-800/50 flex items-center px-4 gap-2 bg-white/50 dark:bg-slate-900/50">
-                  <div className="w-3 h-3 rounded-full bg-red-400" />
-                  <div className="w-3 h-3 rounded-full bg-yellow-400" />
-                  <div className="w-3 h-3 rounded-full bg-green-400" />
-                </div>
-                <div className="p-6 flex flex-col gap-4 h-full">
-                  <div className="flex gap-4">
-                    <div className="w-1/3 h-24 rounded-xl bg-gradient-to-br from-blue-500/10 to-cyan-500/10 border border-blue-500/20" />
-                    <div className="w-2/3 h-24 rounded-xl bg-slate-100/50 dark:bg-slate-800/50" />
-                  </div>
-                  <div className="flex-1 rounded-xl bg-slate-100/50 dark:bg-slate-800/50 p-4">
-                    <div className="h-3 w-1/2 bg-slate-200 dark:bg-slate-700 rounded mb-2" />
-                    <div className="h-3 w-3/4 bg-slate-200 dark:bg-slate-700 rounded" />
-                  </div>
-                </div>
-              </motion.div>
-
-              {/* Floating Icons */}
-              <motion.div 
-                animate={{ y: [10, -10, 10], x: [5, -5, 5] }}
-                transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                className="absolute z-30 bottom-1/4 -right-12 glass p-4 rounded-xl text-cyan-500 shadow-xl"
-              >
-                <Cpu size={24} />
-              </motion.div>
-              
-              <motion.div 
-                animate={{ y: [-20, 20, -20], x: [-10, 10, -10] }}
-                transition={{ duration: 7, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-                className="absolute z-30 top-10 right-10 glass p-4 rounded-xl text-purple-500 shadow-xl"
-              >
-                <Globe size={24} />
-              </motion.div>
-
-              <motion.div 
-                animate={{ y: [15, -15, 15], x: [10, -10, 10] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut", delay: 0.5 }}
-                className="absolute z-30 -bottom-10 left-1/4 glass p-4 rounded-xl text-blue-500 shadow-xl"
-              >
-                <Smartphone size={24} />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img 
+                  src={heroImg.src} 
+                  alt="Deveraa Hero"
+                  className="w-full h-auto object-cover rounded-2xl"
+                />
               </motion.div>
             </div>
           </motion.div>

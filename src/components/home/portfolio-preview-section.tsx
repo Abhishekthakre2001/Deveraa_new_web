@@ -5,12 +5,16 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
+import eCommerceImg from "@/app/assets/e-commerce-web.jpeg";
+import tradingAppImg from "@/app/assets/tradingmobileapp.jpeg";
+import viceoCallImg from "@/app/assets/viceo-call.jpeg";
+
 const PROJECTS = [
   {
     title: "Global FinTech Platform",
     category: "Financial Technology",
     description: "A highly secure, scalable payment processing platform handling millions of transactions daily with real-time analytics.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=80",
+    image: tradingAppImg.src,
     tech: ["Next.js", "Node.js", "PostgreSQL", "AWS"],
     color: "from-blue-500 to-cyan-400"
   },
@@ -18,7 +22,7 @@ const PROJECTS = [
     title: "AI Healthcare Assistant",
     category: "HealthTech & AI",
     description: "Intelligent diagnostic assistant utilizing large language models to help doctors analyze patient data rapidly.",
-    image: "https://images.unsplash.com/photo-1555949963-ff9fe0c870eb?w=800&q=80",
+    image: viceoCallImg.src,
     tech: ["React Native", "Python", "OpenAI", "GCP"],
     color: "from-purple-500 to-indigo-400"
   },
@@ -26,7 +30,7 @@ const PROJECTS = [
     title: "Enterprise E-commerce",
     category: "Retail & Logistics",
     description: "Headless e-commerce solution with extreme performance, real-time inventory, and AI-driven recommendations.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=800&q=80",
+    image: eCommerceImg.src,
     tech: ["Vue.js", "NestJS", "Redis", "Docker"],
     color: "from-cyan-500 to-teal-400"
   }
