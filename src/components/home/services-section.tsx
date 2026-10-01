@@ -1,157 +1,180 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Code, Smartphone, Cloud, Cpu, PenTool, Database } from "lucide-react";
+import { motion, useReducedMotion } from "framer-motion";
+import { Code, Smartphone, Cloud, Cpu, PenTool, Database, type LucideIcon } from "lucide-react";
 
-const SERVICES = [
-  {
-    title: "Web Development",
-    label: "Frontend & Backend",
-    description: "High-performance web applications built with Next.js, React, and modern architectures.",
-    icon: Code,
-    color: "from-blue-500 to-cyan-400"
-  },
-  {
-    title: "Mobile Apps",
-    label: "iOS & Android",
-    description: "Native-like cross-platform mobile experiences using React Native.",
-    icon: Smartphone,
-    color: "from-purple-500 to-indigo-400"
-  },
-  {
-    title: "SaaS Development",
-    label: "Scalable Platforms",
-    description: "End-to-end SaaS product development from architecture to subscription management.",
-    icon: Cloud,
-    color: "from-cyan-500 to-teal-400"
-  },
-  {
-    title: "AI Solutions",
-    label: "Machine Learning",
-    description: "Integrate large language models and machine learning to supercharge your business.",
-    icon: Cpu,
-    color: "from-orange-500 to-pink-500"
-  },
-  {
-    title: "UI/UX Design",
-    label: "Product Design",
-    description: "Beautiful, intuitive interfaces that users love, designed with a focus on conversion.",
-    icon: PenTool,
-    color: "from-pink-500 to-rose-400"
-  },
-  {
-    title: "Cloud & DevOps",
-    label: "Infrastructure",
-    description: "Scalable infrastructure and automated deployment pipelines for maximum reliability.",
-    icon: Database,
-    color: "from-blue-600 to-indigo-600"
-  }
-];
+/**
+ * Deveraa — Services section (cards, one screen, light + dark)
+ *
+ * Fits inside a single viewport (100svh).
+ *  - Desktop: 3 x 2 grid of cards, each with an image on the left and text on the right.
+ *  - Tablet:  2 x 3 grid.
+ *  - Mobile:  one row of cards you swipe sideways (snaps to each card).
+ * Cards rise in one after another when the section scrolls into view.
+ * Images live in /public/services (replace them with your own photos any time).
+ */
 
-const containerVariants = {
-  hidden: { opacity: 0 },
-  show: {
-    opacity: 1,
-    transition: {
-      staggerChildren: 0.1
-    }
-  }
+type Service = {
+  id: string;
+  title: string;
+  label: string;
+  description: string;
+  icon: LucideIcon;
+  image: string;
+  stack: string[];
 };
 
-const itemVariants = {
-  hidden: { opacity: 0, y: 30 },
-  show: { opacity: 1, y: 0, transition: { type: "spring" as const, stiffness: 300, damping: 24 } }
+const SERVICES: Service[] = [
+  {
+    id: "web",
+    title: "Web Development",
+    label: "Frontend and backend",
+    description: "High-performance web applications built with Next.js, React and modern architecture.",
+    icon: Code,
+    image: "/services/web.svg",
+    stack: ["Next.js", "React", "Node.js"],
+  },
+  {
+    id: "mobile",
+    title: "Mobile Apps",
+    label: "iOS and Android",
+    description: "Native-feeling apps for both platforms from a single codebase, built with React Native.",
+    icon: Smartphone,
+    image: "/services/mobile.svg",
+    stack: ["React Native", "Expo", "Offline mode"],
+  },
+  {
+    id: "saas",
+    title: "SaaS Development",
+    label: "Scalable platforms",
+    description: "End-to-end product development, from architecture to subscriptions and billing.",
+    icon: Cloud,
+    image: "/services/saas.svg",
+    stack: ["Multi-tenant", "Billing", "Auth and roles"],
+  },
+  {
+    id: "ai",
+    title: "AI Solutions",
+    label: "Machine learning",
+    description: "Add large language models and machine learning to your product and daily operations.",
+    icon: Cpu,
+    image: "/services/ai.svg",
+    stack: ["LLM apps", "Chatbots", "Automation"],
+  },
+  {
+    id: "design",
+    title: "UI/UX Design",
+    label: "Product design",
+    description: "Clear, intuitive interfaces people enjoy using, designed to turn visitors into customers.",
+    icon: PenTool,
+    image: "/services/design.svg",
+    stack: ["Research", "Prototypes", "Design systems"],
+  },
+  {
+    id: "cloud",
+    title: "Cloud and DevOps",
+    label: "Infrastructure",
+    description: "Scalable infrastructure and automated deployments that keep your product reliable.",
+    icon: Database,
+    image: "/services/cloud.svg",
+    stack: ["AWS", "Docker", "CI/CD"],
+  },
+];
+
+const list = {
+  hidden: {},
+  show: { transition: { staggerChildren: 0.1 } },
+};
+
+const cardIn = {
+  hidden: { opacity: 0, y: 56 },
+  show: { opacity: 1, y: 0, transition: { duration: 0.8, ease: [0.22, 1, 0.36, 1] as const } },
 };
 
 export function ServicesSection() {
+  const reduce = !!useReducedMotion();
+
   return (
-    <section className="py-32 relative bg-slate-50 dark:bg-slate-950 overflow-hidden">
-      {/* Background elements */}
-      <div className="absolute top-0 left-0 w-full h-full bg-grid-pattern opacity-30 pointer-events-none" />
-      <div className="absolute -top-40 -right-40 w-96 h-96 bg-blue-500/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-40 -left-40 w-96 h-96 bg-cyan-500/10 rounded-full blur-[100px] pointer-events-none" />
+    <section className="relative flex h-[100svh] flex-col overflow-hidden bg-white py-6 text-slate-900 sm:py-10 dark:bg-[#0a1020] dark:text-white">
+      {/* quiet backdrop */}
+      <div className="pointer-events-none absolute -left-40 top-1/3 h-[420px] w-[420px] rounded-full bg-blue-500/10 blur-[140px] dark:bg-blue-600/15" />
 
-      <div className="container mx-auto px-4 sm:px-8 relative z-10">
-        <div className="max-w-3xl mx-auto text-center mb-20">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-sm font-semibold text-slate-700 dark:text-slate-300 mb-6 shadow-sm"
-          >
-            <span className="w-2 h-2 rounded-full bg-blue-500 animate-pulse" />
-            Comprehensive Capabilities
-          </motion.div>
-
-          <motion.h2
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ delay: 0.1 }}
-            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-slate-900 dark:text-white mb-6"
-          >
-            Technology <span className="text-gradient">Expertise</span>
-          </motion.h2>
-
-          <motion.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ delay: 0.2 }}
-            className="text-lg md:text-xl text-slate-600 dark:text-slate-400"
-          >
-            We provide end-to-end software development services tailored to build the next generation of digital products.
-          </motion.p>
-        </div>
-        
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="show"
-          viewport={{ once: true, margin: "-50px" }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8"
+      <div className="container relative mx-auto flex min-h-0 flex-1 flex-col px-4 sm:px-8">
+        {/* Header */}
+        <motion.div
+          initial={reduce ? false : { opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, amount: 0.5 }}
+          transition={{ duration: 0.7 }}
+          className="mb-5 flex shrink-0 items-end justify-between gap-10 sm:mb-8"
         >
-          {SERVICES.map((service, index) => {
-            const Icon = service.icon;
-            return (
-              <motion.div
-                key={service.title}
-                variants={itemVariants}
-                whileHover={{ y: -10, rotateX: 2, rotateY: -2 }}
-                className="group relative h-full perspective-1000"
-              >
-                {/* Hover Glow Effect */}
-                <div className={`absolute -inset-0.5 bg-gradient-to-br ${service.color} rounded-2xl blur opacity-0 group-hover:opacity-20 transition duration-500`} />
-                
-                <div className="relative h-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-8 overflow-hidden shadow-sm group-hover:shadow-xl group-hover:border-slate-300 dark:group-hover:border-slate-700 transition-all duration-500">
-                  {/* Subtle inner background pattern on hover */}
-                  <div className="absolute inset-0 bg-grid-pattern opacity-0 group-hover:opacity-10 transition-opacity duration-500" />
-                  
-                  <div className="relative z-10 flex flex-col h-full">
-                    <div className="flex items-start justify-between mb-8">
-                      <div className={`w-14 h-14 rounded-xl bg-gradient-to-br ${service.color} p-[1px] group-hover:scale-110 transition-transform duration-500`}>
-                        <div className="w-full h-full bg-white dark:bg-slate-900 rounded-xl flex items-center justify-center">
-                          <Icon className="w-6 h-6 text-slate-800 dark:text-slate-200 group-hover:text-transparent group-hover:bg-clip-text group-hover:bg-gradient-to-br group-hover:from-blue-500 group-hover:to-cyan-400 transition-all" />
-                        </div>
-                      </div>
-                      <span className="text-xs font-semibold px-3 py-1 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
-                        {service.label}
-                      </span>
-                    </div>
-                    
-                    <h3 className="text-2xl font-bold text-slate-900 dark:text-white mb-3 group-hover:text-blue-600 dark:group-hover:text-cyan-400 transition-colors">
-                      {service.title}
-                    </h3>
-                    
-                    <p className="text-slate-600 dark:text-slate-400 leading-relaxed flex-grow">
-                      {service.description}
-                    </p>
-                  </div>
-                </div>
-              </motion.div>
-            )
-          })}
+          <h2 className="max-w-3xl font-serif text-3xl leading-[1.05] tracking-tight sm:text-4xl lg:text-5xl">
+            Everything it takes to design, build and run your product.
+          </h2>
+          <p className="hidden max-w-xs pb-1 leading-relaxed text-slate-600 xl:block dark:text-slate-400">
+            One team for the whole journey, so nothing gets lost between design, code and launch.
+          </p>
         </motion.div>
+
+        {/* Cards */}
+        <motion.ul
+          variants={list}
+          initial={reduce ? "show" : "hidden"}
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+          className="-mx-4 flex min-h-0 flex-1 snap-x snap-mandatory gap-3 overflow-x-auto px-4 pb-1 sm:mx-0 sm:grid sm:grid-cols-2 sm:grid-rows-3 sm:gap-4 sm:overflow-visible sm:px-0 sm:pb-0 lg:grid-cols-3 lg:grid-rows-2 lg:gap-5"
+        >
+          {SERVICES.map((s) => {
+            const Icon = s.icon;
+            return (
+              <motion.li
+                key={s.id}
+                variants={cardIn}
+                whileHover={reduce ? undefined : { y: -6 }}
+                transition={{ type: "spring", stiffness: 300, damping: 24 }}
+                className="group flex min-h-0 w-[78%] shrink-0 snap-center flex-col overflow-hidden rounded-2xl border border-slate-200 bg-slate-50 transition-colors duration-300 hover:border-blue-400/60 sm:w-auto sm:flex-row lg:rounded-3xl dark:border-white/10 dark:bg-white/[0.04] dark:hover:border-blue-400/50"
+              >
+                {/* Image */}
+                <div className="relative h-2/5 shrink-0 overflow-hidden sm:h-auto sm:w-[40%]">
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={s.image}
+                    alt=""
+                    aria-hidden="true"
+                    loading="lazy"
+                    onError={(e) => {
+                      e.currentTarget.style.display = "none";
+                    }}
+                    className="absolute inset-0 h-full w-full bg-slate-800 object-cover transition-transform duration-[900ms] ease-out group-hover:scale-110"
+                  />
+                  <span className="absolute inset-0 bg-gradient-to-t from-[#0a1020]/70 via-transparent to-transparent" />
+                  <span className="absolute bottom-3 left-3 flex h-10 w-10 items-center justify-center rounded-full border border-white/40 bg-white/15 text-white backdrop-blur-sm">
+                    <Icon size={18} />
+                  </span>
+                </div>
+
+                {/* Text */}
+                <div className="flex min-h-0 min-w-0 flex-1 flex-col justify-center p-4 sm:p-5 lg:p-6">
+                  <p className="text-sm text-slate-500 dark:text-slate-400">{s.label}</p>
+                  <h3 className="mt-1 font-serif text-xl leading-tight sm:text-2xl">{s.title}</h3>
+                  <p className="mt-2 line-clamp-3 text-sm leading-relaxed text-slate-600 sm:text-[15px] dark:text-slate-400">
+                    {s.description}
+                  </p>
+                  <ul className="mt-3 hidden flex-wrap gap-1.5 [@media(min-height:760px)]:flex">
+                    {s.stack.map((t) => (
+                      <li
+                        key={t}
+                        className="rounded-full border border-slate-200 px-2.5 py-1 text-xs text-slate-700 dark:border-white/10 dark:text-slate-300"
+                      >
+                        {t}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              </motion.li>
+            );
+          })}
+        </motion.ul>
       </div>
     </section>
   );
