@@ -4,7 +4,8 @@ import Link from "next/link";
 import { motion, useReducedMotion } from "framer-motion";
 import { ArrowUp, Mail, Phone } from "lucide-react";
 import type { CSSProperties } from "react";
-
+import Image from "next/image";
+import Logo from "../app/assets/deveraa-logo.png";
 /**
  * Deveraa — Footer (light + dark)
  *
@@ -118,7 +119,7 @@ export function Footer() {
         {/* 2. Brand + links */}
         <div className="grid grid-cols-2 gap-x-6 gap-y-12 py-14 md:grid-cols-4 lg:grid-cols-12 lg:gap-x-8 md:py-16">
           <div className="col-span-2 md:col-span-4 lg:col-span-4">
-            <Link
+            {/* <Link
               href="/"
               className="inline-flex items-center gap-3 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-md"
             >
@@ -126,6 +127,16 @@ export function Footer() {
                 D
               </span>
               <span className="text-xl font-bold">Deveraa</span>
+            </Link> */}
+            <Link href="/" className="relative z-10 flex shrink-0 items-center" aria-label="Deveraa home">
+              <Image
+                src={Logo}
+                alt="Deveraa Logo"
+                width={160}
+                height={45}
+                priority
+              // className={("w-auto transition-all duration-500", pill ? "h-8 sm:h-9" : "h-9 sm:h-10")}
+              />
             </Link>
             <p className="mt-5 max-w-sm leading-relaxed text-slate-600 dark:text-slate-400">
               We build modern web, mobile, SaaS and AI products for businesses that need them to perform.
