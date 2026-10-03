@@ -60,12 +60,12 @@ export default function RootLayout({
             disableTransitionOnChange
           >
             <ScrollProgress />
-            {/* <Navbar /> */}
+            <Navbar />
             <main className="flex-1">
               {children}
             </main>
             <Footer />
-            {/* <CookieConsent /> */}
+            <CookieConsent />
           </ThemeProvider>
         </Providers>
       </body>
