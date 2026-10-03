@@ -4,7 +4,7 @@ export default function BlogPage() {
       <div className="max-w-3xl mx-auto text-center">
         <h1 className="text-4xl font-bold tracking-tight sm:text-5xl mb-6">Latest Insights</h1>
         <p className="text-lg text-muted-foreground mb-8">
-          Thoughts, news, and technical articles from the Deveraa team.
+          Thoughts, news, and technical articles from the DevEraa team.
         </p>
         <div className="grid gap-8 text-left">
           {[1, 2, 3].map(i => (

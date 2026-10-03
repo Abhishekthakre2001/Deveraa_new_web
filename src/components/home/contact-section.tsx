@@ -8,6 +8,7 @@ import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
 import { toast } from "sonner";
+import { openWhatsAppWithMessage } from "@/lib/whatsapp";
 
 const contactSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -25,11 +26,23 @@ export function ContactSection() {
     resolver: zodResolver(contactSchema),
   });
 
-  const onSubmit = async (data: ContactFormValues) => {
-    // Simulate API call
-    await new Promise(resolve => setTimeout(resolve, 1000));
-    console.log(data);
-    toast.success("Message sent successfully! We'll get back to you soon.");
+  const onSubmit = (data: ContactFormValues) => {
+    const message = [
+      "New project inquiry",
+      `Name: ${data.name}`,
+      `Email: ${data.email}`,
+      `Phone: ${data.phone || "Not provided"}`,
+      `Company: ${data.company || "Not provided"}`,
+      `Budget: ${data.budget}`,
+      `Project details: ${data.message}`,
+    ].join("\n");
+
+    if (!openWhatsAppWithMessage(message)) {
+      toast.error("WhatsApp could not be opened. Please allow pop-ups and try again.");
+      return;
+    }
+
+    toast.success("WhatsApp opened with your message. Tap Send there to deliver it.");
     reset();
   };
 
@@ -44,7 +57,7 @@ export function ContactSection() {
             viewport={{ once: true }}
             className="inline-flex rounded-full border border-primary/20 bg-primary/10 px-5 py-2 text-sm font-medium text-primary"
           >
-         Let's Build 
+         Let&apos;s Build
           </motion.span>
 
           <motion.h2
@@ -54,7 +67,7 @@ export function ContactSection() {
             viewport={{ once: true }}
             className="mt-6 text-4xl md:text-6xl font-bold leading-tight"
           >
-            Let's Build 
+            Let&apos;s Build
             <br />
 
             <span className="bg-gradient-to-r from-cyan-500 via-blue-500 to-violet-500 bg-clip-text text-transparent">
@@ -136,7 +149,7 @@ export function ContactSection() {
             </div>
 
             <Button type="submit" size="lg" className="w-full" disabled={isSubmitting}>
-              {isSubmitting ? "Sending..." : "Send Message"}
+              {isSubmitting ? "Opening WhatsApp..." : "Continue in WhatsApp"}
             </Button>
           </form>
         </motion.div>

@@ -57,7 +57,7 @@ export function CtaSection() {
           </h2>
           
           <p className="text-xl md:text-2xl text-slate-300 mb-12 max-w-2xl mx-auto leading-relaxed">
-            Join forward-thinking brands that trust Deveraa to deliver exceptional software solutions with speed and precision.
+            Join forward-thinking brands that trust DevEraa to deliver exceptional software solutions with speed and precision.
           </p>
           
           <div className="flex flex-col sm:flex-row items-center justify-center gap-6">

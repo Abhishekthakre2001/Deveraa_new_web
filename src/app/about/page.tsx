@@ -62,7 +62,7 @@ const VALUES = [
 const JOURNEY = [
   {
     title: "The idea",
-    text: "Deveraa started with a simple belief: businesses deserve software built with the same care as their best products.",
+    text: "DevEraa started with a simple belief: businesses deserve software built with the same care as their best products.",
   },
   {
     title: "First launches",

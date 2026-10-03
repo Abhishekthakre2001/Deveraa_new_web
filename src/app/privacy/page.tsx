@@ -1,10 +1,13 @@
+// app/privacy/page.tsx
+import type { Metadata } from "next";
+import { PrivacyPolicy } from "@/components/legal/privacy-policy";
+
+export const metadata: Metadata = {
+  title: "Privacy Policy | Deveraa",
+  description:
+    "How Deveraa, a software company in Nagpur, India, collects, uses and protects personal data under the DPDP Act, 2023 and the IT Act, 2000.",
+};
+
 export default function PrivacyPage() {
-  return (
-    <div className="container mx-auto px-4 py-24 sm:px-8 max-w-3xl">
-      <h1 className="text-4xl font-bold mb-8">Privacy Policy</h1>
-      <p className="text-muted-foreground mb-4">
-        This is a placeholder for the Privacy Policy. We take your privacy seriously and ensure all data is handled securely.
-      </p>
-    </div>
-  );
+  return <PrivacyPolicy />;
 }

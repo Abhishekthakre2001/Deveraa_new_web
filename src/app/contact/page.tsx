@@ -17,31 +17,34 @@ import {
   ChevronRight,
   Copy,
   Home,
-  Loader2,
   Mail,
   MessageSquare,
   Phone,
   Send,
 } from "lucide-react";
+import { toast } from "sonner";
+import { createWhatsAppUrl, openWhatsAppWithMessage } from "@/lib/whatsapp";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const GRADIENT = "from-cyan-500 via-blue-500 to-violet-500";
 
 // Placeholder details: replace with your real ones
-const EMAIL = "hello@deveraa.com";
-const PHONE_DISPLAY = "+91 98765 43210";
-const PHONE_HREF = "tel:+919876543210";
+const EMAIL = "info@deveraa.com";
+const PHONE_DISPLAY = "+91 92701 39519";
+const PHONE_HREF = "tel:+919270139519";
 
 /**
  * Social logos come from Simple Icons, pinned to v11.14.0 (newer releases
  * dropped LinkedIn). They are used as CSS masks so they take any color.
  */
+const WHATSAPP_URL = createWhatsAppUrl("Hi Deveraa, I'd like to talk about a project.");
+
 const SOCIALS = [
-  { name: "LinkedIn", slug: "linkedin", color: "#0A66C2", href: "https://linkedin.com/company/deveraa" },
-  { name: "X", slug: "x", color: "#000000", href: "https://x.com/deveraa" },
-  { name: "Instagram", slug: "instagram", color: "#E4405F", href: "https://instagram.com/deveraa" },
-  { name: "GitHub", slug: "github", color: "#181717", href: "https://github.com/deveraa" },
-  { name: "Facebook", slug: "facebook", color: "#0866FF", href: "https://facebook.com/deveraa" },
+  { name: "LinkedIn", slug: "linkedin", color: "#0A66C2", href: "https://www.linkedin.com/company/deveraa/posts/?feedView=all" },
+  { name: "YouTube", slug: "youtube", color: "#000000", href: "https://www.youtube.com/@DeveraaOfficial" },
+  { name: "Instagram", slug: "instagram", color: "#E4405F", href: "https://www.instagram.com/deveraaofficial/" },
+  { name: "WhatsApp", slug: "whatsapp", color: "#25D366", href: WHATSAPP_URL },
+  { name: "Facebook", slug: "facebook", color: "#0866FF", href: "https://www.facebook.com/people/DevEraa/61570090200272/" },
 ];
 
 const SERVICES = [
@@ -209,14 +212,26 @@ const fieldClass =
   "w-full rounded-xl border bg-background px-4 py-3 text-base outline-none transition-all placeholder:text-muted-foreground/60 focus:border-blue-500 focus:ring-4 focus:ring-blue-500/15";
 
 function ContactForm() {
-  const [status, setStatus] = useState<"idle" | "sending" | "sent">("idle");
+  const [status, setStatus] = useState<"idle" | "sent">("idle");
 
-  async function onSubmit(e: React.FormEvent<HTMLFormElement>) {
+  function onSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setStatus("sending");
-    // TODO: connect to your backend, e.g.
-    // await fetch("/api/contact", { method: "POST", body: new FormData(e.currentTarget) });
-    await new Promise((r) => setTimeout(r, 1200));
+
+    const formData = new FormData(e.currentTarget);
+    const message = [
+      "New contact form submission",
+      `Name: ${formData.get("name")}`,
+      `Email: ${formData.get("email")}`,
+      `Phone: ${formData.get("phone") || "Not provided"}`,
+      `Service: ${formData.get("service") || "Not selected"}`,
+      `Message: ${formData.get("message")}`,
+    ].join("\n");
+
+    if (!openWhatsAppWithMessage(message)) {
+      toast.error("WhatsApp could not be opened. Please allow pop-ups and try again.");
+      return;
+    }
+
     setStatus("sent");
   }
 
@@ -249,9 +264,9 @@ function ContactForm() {
             >
               <Check className="h-10 w-10" />
             </motion.span>
-            <h3 className="text-2xl font-bold">Message sent!</h3>
+            <h3 className="text-2xl font-bold">Continue in WhatsApp</h3>
             <p className="mt-2 max-w-sm text-muted-foreground">
-              Thanks for reaching out. We&apos;ll get back to you shortly.
+              Your message is ready in WhatsApp. Tap Send there to deliver it to our team.
             </p>
             <button
               type="button"
@@ -339,20 +354,10 @@ function ContactForm() {
 
             <button
               type="submit"
-              disabled={status === "sending"}
-              className={`group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r ${GRADIENT} px-8 py-4 font-semibold text-white shadow-lg shadow-blue-500/25 transition-transform hover:scale-[1.02] disabled:opacity-70 disabled:hover:scale-100 sm:w-auto`}
+              className={`group inline-flex w-full items-center justify-center gap-2 rounded-full bg-gradient-to-r ${GRADIENT} px-8 py-4 font-semibold text-white shadow-lg shadow-blue-500/25 transition-transform hover:scale-[1.02] sm:w-auto`}
             >
-              {status === "sending" ? (
-                <>
-                  <Loader2 className="h-4 w-4 animate-spin" />
-                  Sending...
-                </>
-              ) : (
-                <>
-                  Send message
-                  <Send className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
-                </>
-              )}
+              Continue in WhatsApp
+              <Send className="h-4 w-4 transition-transform group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
             </button>
           </motion.form>
         )}

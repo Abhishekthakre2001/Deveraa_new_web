@@ -4,7 +4,7 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Code, Smartphone, Cloud, Cpu, PenTool, Database, type LucideIcon } from "lucide-react";
 
 /**
- * Deveraa — Services section (cards, one screen, light + dark)
+ * DevEraa — Services section (cards, one screen, light + dark)
  *
  * Fits inside a single viewport (100svh).
  *  - Desktop: 3 x 2 grid of cards, each with an image on the left and text on the right.

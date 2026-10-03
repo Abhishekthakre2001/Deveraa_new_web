@@ -41,15 +41,16 @@ const EMAIL = "hello@deveraa.com";
 const PHONE_HREF = "tel:+919876543210";
 
 const SERVICES = [
-  { icon: Globe, name: "Web Development", text: "Fast, modern sites and web apps" },
-  { icon: Smartphone, name: "Mobile Apps", text: "iOS and Android, native feel" },
-  { icon: Layers, name: "SaaS Solutions", text: "Scalable multi-tenant platforms" },
-  { icon: Cpu, name: "AI Solutions", text: "Automation, LLMs and analytics" },
-  { icon: PenTool, name: "UI/UX Design", text: "Research-led, beautiful interfaces" },
-  { icon: Cloud, name: "Cloud & DevOps", text: "Reliable, automated infrastructure" },
+  { icon: Globe, name: "Web Development", text: "Fast, modern sites and web apps", href: "/services/web" },
+  { icon: Smartphone, name: "Mobile Apps", text: "iOS and Android, native feel", href: "/services/mobile" },
+  { icon: Layers, name: "SaaS Solutions", text: "Scalable multi-tenant platforms", href: "/services/saas" },
+  { icon: Cpu, name: "AI Solutions", text: "Automation, LLMs and analytics", href: "/services/ai" },
+  { icon: PenTool, name: "UI/UX Design", text: "Research-led, beautiful interfaces", href: "/services/ui-ux" },
+  { icon: Cloud, name: "Cloud & DevOps", text: "Reliable, automated infrastructure", href: "/services/cloud" },
 ];
 
 const NAV_LINKS = [
+  { name: "Home", href: "/", icon: Users, mega: false },
   { name: "About", href: "/about", icon: Users, mega: false },
   { name: "Services", href: "/services", icon: Layers, mega: true },
   { name: "Portfolio", href: "/portfolio", icon: Briefcase, mega: false },
@@ -116,7 +117,7 @@ function ServicesMenu({ onNavigate }: { onNavigate: () => void }) {
                 transition={{ delay: 0.05 + i * 0.04 }}
               >
                 <Link
-                  href="/services"
+                  href={s.href}
                   onClick={onNavigate}
                   className="group flex items-start gap-3 rounded-2xl p-3 transition-colors hover:bg-slate-900/5 dark:hover:bg-white/5"
                 >
@@ -261,10 +262,10 @@ export function Navbar() {
               />
 
               {/* Logo */}
-              <Link href="/" className="relative z-10 flex shrink-0 items-center" aria-label="Deveraa home">
+              <Link href="/" className="relative z-10 flex shrink-0 items-center" aria-label="DevEraa home">
                 <Image
                   src={Logo}
-                  alt="Deveraa Logo"
+                  alt="DevEraa Logo"
                   width={160}
                   height={45}
                   priority
@@ -457,7 +458,7 @@ export function Navbar() {
                   return (
                     <Link
                       key={s.name}
-                      href="/services"
+                      href={s.href}
                       onClick={() => setOpen(false)}
                       className="inline-flex items-center gap-2 rounded-full border border-slate-200 px-3.5 py-2 text-sm font-medium transition-colors hover:border-blue-500/40 dark:border-slate-800"
                     >

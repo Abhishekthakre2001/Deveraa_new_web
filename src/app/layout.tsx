@@ -20,13 +20,13 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: {
-    default: "Deveraa | Premium Software Development",
+    default: "DevEraa | Premium Software Development",
     template: "%s | Deveraa",
   },
   description: "Build modern software products faster with Deveraa. We specialize in enterprise-grade web, mobile, SaaS, and AI solutions.",
   metadataBase: new URL("https://deveraa.com"),
   openGraph: {
-    title: "Deveraa | Premium Software Development",
+    title: "DevEraa | Premium Software Development",
     description: "Build modern software products faster with Deveraa.",
     url: "https://deveraa.com",
     siteName: "Deveraa",
@@ -35,7 +35,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Deveraa | Premium Software Development",
+    title: "DevEraa | Premium Software Development",
     description: "Build modern software products faster with Deveraa.",
   },
 };

@@ -60,7 +60,7 @@ export function HeroSection() {
             </h1>
             
             <p className="text-lg lg:text-xl text-slate-600 dark:text-slate-300 mb-10 max-w-xl leading-relaxed">
-              Deveraa is a premium software development company delivering enterprise-grade web, mobile, SaaS, and AI solutions for forward-thinking brands.
+              DevEraa is a premium software development company delivering enterprise-grade web, mobile, SaaS, and AI solutions for forward-thinking brands.
             </p>
             
             <div className="flex flex-col sm:flex-row items-center gap-4">
@@ -135,7 +135,7 @@ export function HeroSection() {
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img 
                   src={heroImg.src} 
-                  alt="Deveraa Hero"
+                  alt="DevEraa Hero"
                   className="w-full h-auto object-cover rounded-2xl"
                 />
               </motion.div>

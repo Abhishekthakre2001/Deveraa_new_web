@@ -20,7 +20,7 @@ const TESTIMONIALS = [
     name: "Sarah Jenkins",
     role: "CTO, TechFlow",
     content:
-      "Deveraa completely transformed our digital presence. Their engineering team is top-notch, delivering a complex SaaS platform ahead of schedule.",
+      "DevEraa completely transformed our digital presence. Their engineering team is top-notch, delivering a complex SaaS platform ahead of schedule.",
     result: "Delivered ahead of schedule",
     accent: "#0891b2",
   },

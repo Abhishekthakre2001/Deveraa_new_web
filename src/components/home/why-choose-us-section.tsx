@@ -5,7 +5,7 @@ import { AnimatePresence, motion, useReducedMotion } from "framer-motion";
 import { Users, Zap, ShieldCheck, TrendingUp, Plus, Check, type LucideIcon } from "lucide-react";
 
 /**
- * Deveraa — "Why choose us" / About section
+ * DevEraa — "Why choose us" / About section
  *
  * Concept: a light/dark editorial section with ONE memorable moment — a pinned
  * "stage" on the right that redraws itself for whichever promise the visitor
@@ -206,7 +206,7 @@ export function WhyChooseUsSection() {
             Software that has to work on Monday morning.
           </motion.h2>
           <p className="max-w-md text-lg leading-relaxed text-slate-600 dark:text-slate-400 lg:col-span-4">
-            Deveraa is a team of engineers and product people. We build web and mobile products for
+            DevEraa is a team of engineers and product people. We build web and mobile products for
             businesses that need them to perform, and we keep you informed at every step.
           </p>
         </div>

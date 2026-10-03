@@ -6,8 +6,9 @@ import { ArrowUp, Mail, Phone } from "lucide-react";
 import type { CSSProperties } from "react";
 import Image from "next/image";
 import Logo from "../app/assets/deveraa-logo.png";
+import { createWhatsAppUrl } from "@/lib/whatsapp";
 /**
- * Deveraa — Footer (light + dark)
+ * DevEraa — Footer (light + dark)
  *
  * 1. Call-to-action band
  * 2. Brand, social icons and link columns
@@ -19,9 +20,8 @@ import Logo from "../app/assets/deveraa-logo.png";
  */
 
 const CONTACT = {
-  email: "hello@deveraa.com",
-  phone: "+91 00000 00000",
-  whatsappNumber: "910000000000", // country code + number, digits only
+  email: "info@deveraa.com",
+  phone: "+91 92701 39519",
 };
 
 /* ───── Brand icons (Font Awesome Free) ───── */
@@ -41,16 +41,14 @@ function BrandIcon({ icon, className = "h-[18px] w-[18px]" }: { icon: Brand; cla
   );
 }
 
-const WHATSAPP_URL = `https://wa.me/${CONTACT.whatsappNumber}?text=${encodeURIComponent(
-  "Hi Deveraa, I'd like to talk about a project."
-)}`;
+const WHATSAPP_URL = createWhatsAppUrl("Hi Deveraa, I'd like to talk about a project.");
 
 const SOCIALS: { name: string; href: string; icon: Brand; color: string }[] = [
-  { name: "Facebook", href: "https://facebook.com/deveraa", icon: FACEBOOK_F, color: "#1877F2" },
+  { name: "Facebook", href: "https://www.facebook.com/people/DevEraa/61570090200272/", icon: FACEBOOK_F, color: "#1877F2" },
   { name: "WhatsApp", href: WHATSAPP_URL, icon: WHATSAPP, color: "#25D366" },
-  { name: "Instagram", href: "https://instagram.com/deveraa", icon: INSTAGRAM, color: "#E4405F" },
-  { name: "LinkedIn", href: "https://linkedin.com/company/deveraa", icon: LINKEDIN_IN, color: "#0A66C2" },
-  { name: "YouTube", href: "https://youtube.com/@deveraa", icon: YOUTUBE, color: "#FF0000" },
+  { name: "Instagram", href: "https://www.instagram.com/deveraaofficial/", icon: INSTAGRAM, color: "#E4405F" },
+  { name: "LinkedIn", href: "https://www.linkedin.com/company/deveraa/posts/?feedView=all", icon: LINKEDIN_IN, color: "#0A66C2" },
+  { name: "YouTube", href: "https://www.youtube.com/@DeveraaOfficial", icon: YOUTUBE, color: "#FF0000" },
 ];
 
 const LINKS = [
@@ -67,8 +65,8 @@ const LINKS = [
     title: "Company",
     items: [
       { label: "About Us", href: "/about" },
-      { label: "Careers", href: "/careers" },
-      { label: "Blog", href: "/blog" },
+      { label: "Services", href: "/services" },
+      { label: "Portfolio", href: "/portfolio" },
       { label: "Contact", href: "/contact" },
     ],
   },
@@ -128,10 +126,10 @@ export function Footer() {
               </span>
               <span className="text-xl font-bold">Deveraa</span>
             </Link> */}
-            <Link href="/" className="relative z-10 flex shrink-0 items-center" aria-label="Deveraa home">
+            <Link href="/" className="relative z-10 flex shrink-0 items-center" aria-label="DevEraa home">
               <Image
                 src={Logo}
-                alt="Deveraa Logo"
+                alt="DevEraa Logo"
                 width={160}
                 height={45}
                 priority
@@ -142,14 +140,14 @@ export function Footer() {
               We build modern web, mobile, SaaS and AI products for businesses that need them to perform.
             </p>
 
-            <ul className="mt-7 flex flex-wrap gap-2.5" aria-label="Deveraa on social media">
+            <ul className="mt-7 flex flex-wrap gap-2.5" aria-label="DevEraa on social media">
               {SOCIALS.map((s) => (
                 <li key={s.name}>
                   <a
                     href={s.href}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Deveraa on ${s.name}`}
+                    aria-label={`DevEraa on ${s.name}`}
                     title={s.name}
                     style={{ "--brand": s.color } as CSSProperties}
                     className="flex h-11 w-11 items-center justify-center rounded-full border border-slate-300 text-slate-700 transition-all duration-300 hover:-translate-y-1 hover:border-[var(--brand)] hover:bg-[var(--brand)] hover:text-white focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 dark:border-white/15 dark:text-slate-300 dark:hover:text-white"
@@ -225,7 +223,7 @@ export function Footer() {
         transition={{ duration: 1, ease: [0.22, 1, 0.36, 1] }}
         className="pointer-events-none -mb-[3vw] select-none text-center font-serif text-[24vw] font-bold leading-[0.85] tracking-tighter text-transparent bg-gradient-to-b from-slate-300 to-transparent bg-clip-text md:text-[19vw] dark:from-white/15"
       >
-        Deveraa
+        DevEraa
       </motion.div>
     </footer>
   );
