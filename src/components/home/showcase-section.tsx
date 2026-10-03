@@ -121,8 +121,8 @@ export function ShowcaseSection() {
 
   return (
     <section className="relative bg-gradient-to-b from-white via-indigo-50/70 to-white dark:from-slate-950 dark:via-slate-900 dark:to-slate-950">
-      <div ref={containerRef} className="relative h-[220vh]">
-        <div className="sticky top-0 flex h-screen items-center justify-center overflow-hidden px-6">
+      <div ref={containerRef} className="relative h-[220svh]">
+        <div className="sticky top-0 flex h-[100svh] items-center justify-center overflow-hidden px-6">
           {/* Soft mesh gradient */}
           <div
             aria-hidden
@@ -178,7 +178,7 @@ export function ShowcaseSection() {
                 animate={reduce ? undefined : { y: [0, -10, 0] }}
                 transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
                 style={{ aspectRatio: `${appImg1.width} / ${appImg1.height}` }}
-                className="relative h-[46vh] max-h-[560px] md:h-[62vh]"
+                className="relative h-[42svh] max-h-[560px] sm:h-[46svh] md:h-[62svh]"
               >
                 <div className="absolute -inset-2 rounded-[2.75rem] bg-white/50 shadow-[0_40px_100px_-30px_rgba(79,70,229,0.5)] ring-1 ring-white/80 backdrop-blur-xl dark:bg-white/10 dark:ring-white/20" />
                 {SCREENS.map((_, i) => (

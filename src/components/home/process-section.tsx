@@ -104,7 +104,7 @@ export function ProcessSection() {
 
                   {/* Content Card */}
                   <motion.div 
-                    initial={{ opacity: 0, x: isEven ? 50 : -50, y: 20 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, x: 0, y: 0 }}
                     viewport={{ once: true, margin: "-50px" }}
                     transition={{ duration: 0.6, type: "spring", bounce: 0.4 }}

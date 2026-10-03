@@ -117,10 +117,10 @@ export function IndustriesSection() {
   return (
     <section
       ref={ref}
-      style={{ height: `calc(100vh + ${N * SCROLL_PER_ITEM}vh)` }}
+      style={{ height: `${100 + N * SCROLL_PER_ITEM}svh` }}
       className="relative bg-white dark:bg-slate-950"
     >
-      <div className="sticky top-0 h-screen max-h-screen overflow-hidden">
+      <div className="sticky top-0 h-[100svh] max-h-[100svh] overflow-hidden">
         {/* Dot grid, faded at the edges */}
         <div className="pointer-events-none absolute inset-0 opacity-70 [background-image:radial-gradient(circle,rgba(100,116,139,0.25)_1px,transparent_1px)] [background-size:26px_26px] [mask-image:radial-gradient(ellipse_at_center,black,transparent_75%)]" />
 
