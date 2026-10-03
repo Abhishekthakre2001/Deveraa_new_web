@@ -15,7 +15,6 @@ import {
 import {
   ArrowRight,
   ArrowUpRight,
-  BookOpen,
   Briefcase,
   CalendarDays,
   ChevronDown,
@@ -178,8 +177,11 @@ export function Navbar() {
   }, []);
 
   useEffect(() => {
-    setOpen(false);
-    setMenuOpen(false);
+    const frame = window.requestAnimationFrame(() => {
+      setOpen(false);
+      setMenuOpen(false);
+    });
+    return () => window.cancelAnimationFrame(frame);
   }, [pathname]);
 
   useEffect(() => {

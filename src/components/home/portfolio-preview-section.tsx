@@ -14,7 +14,7 @@ const PROJECTS = [
     title: "Global FinTech Platform",
     category: "Financial Technology",
     description: "A highly secure, scalable payment processing platform handling millions of transactions daily with real-time analytics.",
-    image: tradingAppImg.src,
+    image: tradingAppImg,
     tech: ["Next.js", "Node.js", "PostgreSQL", "AWS"],
     color: "from-blue-500 to-cyan-400"
   },
@@ -22,7 +22,7 @@ const PROJECTS = [
     title: "AI Healthcare Assistant",
     category: "HealthTech & AI",
     description: "Intelligent diagnostic assistant utilizing large language models to help doctors analyze patient data rapidly.",
-    image: viceoCallImg.src,
+    image: viceoCallImg,
     tech: ["React Native", "Python", "OpenAI", "GCP"],
     color: "from-purple-500 to-indigo-400"
   },
@@ -30,7 +30,7 @@ const PROJECTS = [
     title: "Enterprise E-commerce",
     category: "Retail & Logistics",
     description: "Headless e-commerce solution with extreme performance, real-time inventory, and AI-driven recommendations.",
-    image: eCommerceImg.src,
+    image: eCommerceImg,
     tech: ["Vue.js", "NestJS", "Redis", "Docker"],
     color: "from-cyan-500 to-teal-400"
   }
@@ -74,7 +74,7 @@ export function PortfolioPreviewSection() {
             viewport={{ once: true }}
             className="text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto"
           >
-            Discover how we've partnered with forward-thinking organizations to build scalable digital products that deliver measurable business impact.
+            Discover how we&apos;ve partnered with forward-thinking organizations to build scalable digital products that deliver measurable business impact.
           </motion.p>
         </div>
 
@@ -96,11 +96,12 @@ export function PortfolioPreviewSection() {
                 <div className="relative h-64 overflow-hidden bg-slate-100 dark:bg-slate-900">
                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/60 to-transparent z-10 opacity-60 group-hover:opacity-40 transition-opacity" />
                   
-                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                  <img 
-                    src={project.image} 
+                  <Image
+                    src={project.image}
                     alt={project.title}
-                    className="object-cover w-full h-full group-hover:scale-110 transition-transform duration-700 ease-in-out"
+                    fill
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    className="h-full w-full object-cover transition-transform duration-700 ease-in-out group-hover:scale-110"
                   />
                   
                   <div className="absolute top-4 left-4 z-20">

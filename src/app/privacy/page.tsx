@@ -3,7 +3,7 @@ import type { Metadata } from "next";
 import { PrivacyPolicy } from "@/components/legal/privacy-policy";
 
 export const metadata: Metadata = {
-  title: "Privacy Policy | Deveraa",
+  title: "Privacy Policy | DevEraa",
   description:
     "How Deveraa, a software company in Nagpur, India, collects, uses and protects personal data under the DPDP Act, 2023 and the IT Act, 2000.",
 };

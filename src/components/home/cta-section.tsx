@@ -1,8 +1,6 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { buttonVariants } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
 import Link from "next/link";
 import { ArrowRight, MessageSquare, Sparkles } from "lucide-react";
 
@@ -50,7 +48,7 @@ export function CtaSection() {
           </div>
 
           <h2 className="text-5xl md:text-6xl lg:text-7xl font-bold mb-8 leading-[1.1] tracking-tight">
-            Let's Turn Your Idea Into a <br />
+            Let&apos;s Turn Your Idea Into a <br />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
               Digital Product
             </span>

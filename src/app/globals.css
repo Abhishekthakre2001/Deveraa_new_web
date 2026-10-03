@@ -165,6 +165,13 @@
   animation-play-state: paused;
 }
 
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee,
+  .animate-marquee-vertical {
+    animation: none !important;
+  }
+}
+
 /* Custom premium utilities */
 @layer utilities {
   .glass {

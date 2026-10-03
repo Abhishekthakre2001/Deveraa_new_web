@@ -2,6 +2,7 @@
 
 // components/services/service-detail.tsx
 
+import { techIconUrl } from "@/lib/tech-icon-url";
 import { useRef, useState } from "react";
 import Link from "next/link";
 import {
@@ -92,8 +93,8 @@ function TechLogo({ tech }: { tech: Tech }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color}`}
-      alt=""
+      src={techIconUrl(tech)}
+      alt={`${tech.name} logo`}
       width={40}
       height={40}
       draggable={false}

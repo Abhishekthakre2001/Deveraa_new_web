@@ -9,15 +9,16 @@ export function CookieConsent() {
 
   useEffect(() => {
     const consent = localStorage.getItem("cookie-consent");
-    if (!consent) {
-      setIsVisible(true);
-    }
+    if (consent) return;
+
+    const frame = window.requestAnimationFrame(() => setIsVisible(true));
+    return () => window.cancelAnimationFrame(frame);
   }, []);
 
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-[400px] bg-background border rounded-lg shadow-lg p-6 z-50 flex flex-col gap-4 animate-in slide-in-from-bottom-8">
+    <div className="fixed bottom-4 left-4 right-4 md:left-auto md:right-4 md:w-[400px] bg-background border rounded-lg shadow-lg p-6 z-50 flex flex-col gap-4 animate-in slide-in-from-bottom-8 motion-reduce:animate-none motion-reduce:transform-none">
       <div className="flex justify-between items-start">
         <h3 className="font-semibold text-lg">Cookie Preferences</h3>
         <Button variant="ghost" size="icon" onClick={() => setIsVisible(false)} className="-mt-2 -mr-2">

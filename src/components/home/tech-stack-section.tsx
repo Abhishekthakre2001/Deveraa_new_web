@@ -1,5 +1,6 @@
 "use client";
 
+import { techIconUrl } from "@/lib/tech-icon-url";
 import { useEffect, useRef, useState } from "react";
 import {
   AnimatePresence,
@@ -129,8 +130,8 @@ function TechLogo({ tech, size = 36 }: { tech: Tech; size?: number }) {
   return (
     // eslint-disable-next-line @next/next/no-img-element
     <img
-      src={`https://cdn.simpleicons.org/${tech.slug}/${tech.color}`}
-      alt=""
+      src={techIconUrl(tech)}
+      alt={`${tech.name} logo`}
       width={size}
       height={size}
       draggable={false}

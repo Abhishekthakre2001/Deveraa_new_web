@@ -227,9 +227,9 @@ export const SERVICES: Record<string, Service> = {
       { icon: Lock, title: "Backup & recovery", text: "Plan backups and recovery procedures to protect data and business continuity." },
     ],
     tech: [
-      T("Amazon Web Services", "amazonaws", "232F3E"),
+      T("Amazon Web Services", "amazonaws", "232F3E", true),
       T("Google Cloud", "googlecloud", "4285F4"),
-      T("Microsoft Azure", "microsoftazure", "0078D4"),
+      T("Microsoft Azure", "microsoftazure", "0078D4", true),
       T("Docker", "docker", "2496ED"),
       T("Kubernetes", "kubernetes", "326CE5"),
       T("Terraform", "terraform", "844FBA"),

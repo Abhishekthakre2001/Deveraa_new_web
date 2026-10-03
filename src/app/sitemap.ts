@@ -1,48 +1,24 @@
-import { MetadataRoute } from 'next'
- 
+import type { MetadataRoute } from "next";
+import { SERVICE_SLUGS } from "@/lib/services-data";
+import { SITE_URL } from "@/lib/seo";
+
 export default function sitemap(): MetadataRoute.Sitemap {
+  const staticRoutes = [
+    "",
+    "/about",
+    "/services",
+    "/portfolio",
+    "/contact",
+    "/privacy",
+    "/terms",
+  ];
+
   return [
-    {
-      url: 'https://deveraa.com',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 1,
-    },
-    {
-      url: 'https://deveraa.com/about',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://deveraa.com/services',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://deveraa.com/portfolio',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://deveraa.com/blog',
-      lastModified: new Date(),
-      changeFrequency: 'weekly',
-      priority: 0.7,
-    },
-    {
-      url: 'https://deveraa.com/careers',
-      lastModified: new Date(),
-      changeFrequency: 'monthly',
-      priority: 0.6,
-    },
-    {
-      url: 'https://deveraa.com/contact',
-      lastModified: new Date(),
-      changeFrequency: 'yearly',
-      priority: 0.7,
-    },
-  ]
+    ...staticRoutes.map((pathname) => ({
+      url: new URL(pathname, SITE_URL).toString(),
+    })),
+    ...SERVICE_SLUGS.map((slug) => ({
+      url: new URL(`/services/${slug}`, SITE_URL).toString(),
+    })),
+  ];
 }

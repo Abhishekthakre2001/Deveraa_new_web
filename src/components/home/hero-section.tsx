@@ -4,7 +4,8 @@ import { motion, useScroll, useTransform } from "framer-motion";
 import { buttonVariants } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
 import Link from "next/link";
-import { ArrowRight, Code2, Cpu, Globe, Layout, Smartphone } from "lucide-react";
+import Image from "next/image";
+import { ArrowRight, Code2 } from "lucide-react";
 import { useRef } from "react";
 import heroImg from "@/app/assets/deveraa-herosection.jpeg";
 
@@ -132,11 +133,13 @@ export function HeroSection() {
                 transition={{ duration: 1, delay: 0.3, type: "spring" }}
                 className="absolute z-10 rounded-2xl w-[120%] max-w-lg shadow-2xl overflow-hidden"
               >
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img 
-                  src={heroImg.src} 
+                <Image
+                  src={heroImg}
                   alt="DevEraa Hero"
-                  className="w-full h-auto object-cover rounded-2xl"
+                  width={heroImg.width}
+                  height={heroImg.height}
+                  sizes="(min-width: 1024px) 512px, 100vw"
+                  className="h-auto w-full rounded-2xl object-cover"
                 />
               </motion.div>
             </div>

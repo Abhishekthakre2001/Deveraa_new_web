@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import { SERVICES, SERVICE_SLUGS } from "@/lib/services-data";
 import { ServiceDetail } from "@/components/services/Service-detail";
+import { createPageMetadata, serializeJsonLd, SITE_URL } from "@/lib/seo";
 
 type Props = { params: Promise<{ service: string }> };
 
@@ -31,10 +32,11 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const data = slug ? SERVICES[slug] : undefined;
   if (!data) return { title: "Service not found" };
 
-  return {
-    title: `${data.title} | Deveraa`,
+  return createPageMetadata({
+    title: data.title,
     description: data.description,
-  };
+    pathname: `/services/${data.slug}`,
+  });
 }
 
 export default async function ServiceDetailPage({ params }: Props) {
@@ -42,6 +44,37 @@ export default async function ServiceDetailPage({ params }: Props) {
   const slug = resolveServiceSlug(service);
 
   if (!slug) notFound();
+  const data = SERVICES[slug];
+  const canonicalUrl = `${SITE_URL}/services/${data.slug}`;
+  const structuredData = {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Service",
+        name: data.title,
+        description: data.description,
+        serviceType: data.title,
+        url: canonicalUrl,
+        provider: { "@id": `${SITE_URL}/#organization` },
+      },
+      {
+        "@type": "BreadcrumbList",
+        itemListElement: [
+          { "@type": "ListItem", position: 1, name: "Home", item: SITE_URL },
+          { "@type": "ListItem", position: 2, name: "Services", item: `${SITE_URL}/services` },
+          { "@type": "ListItem", position: 3, name: data.title, item: canonicalUrl },
+        ],
+      },
+    ],
+  };
 
-  return <ServiceDetail slug={slug} />;
+  return (
+    <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: serializeJsonLd(structuredData) }}
+      />
+      <ServiceDetail slug={slug} />
+    </>
+  );
 }

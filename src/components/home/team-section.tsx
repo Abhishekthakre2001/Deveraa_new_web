@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import Image from "next/image";
 import { Card, CardContent } from "@/components/ui/card";
 import { FaLinkedin, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
@@ -51,10 +52,13 @@ export function TeamSection() {
             >
               <Card className="overflow-hidden border-border/50 bg-background hover:shadow-lg transition-all">
                 <div className="aspect-square relative overflow-hidden bg-muted">
-                  <img 
-                    src={member.image} 
+                  <Image
+                    src={member.image}
                     alt={member.name}
-                    className="object-cover w-full h-full grayscale group-hover:grayscale-0 transition-all duration-500"
+                    fill
+                    unoptimized
+                    sizes="(min-width: 1024px) 25vw, (min-width: 640px) 50vw, 100vw"
+                    className="object-cover grayscale transition-all duration-500 group-hover:grayscale-0"
                   />
                   <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center gap-4">
                     <Link href="#" className="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center hover:bg-primary hover:text-primary-foreground transition-colors text-white">
