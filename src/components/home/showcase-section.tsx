@@ -13,13 +13,13 @@ import {
 import { useRef, useState } from "react";
 import Image from "next/image";
 
-import appImg1 from "@/app/assets/abacus-mobile-app1.jpeg";
-import appImg2 from "@/app/assets/abacus-mobile-app2.jpeg";
-import appImg3 from "@/app/assets/abacus-mobile-app3.jpeg";
+import appImg1 from "@/app/assets/Mobile/app1.png";
+import appImg2 from "@/app/assets/Mobile/app2.png";
+import appImg3 from "@/app/assets/Mobile/app3.png";
 // TODO: replace 4-6 with your own unique screenshots
-import appImg4 from "@/app/assets/abacus-mobile-app1.jpeg";
-import appImg5 from "@/app/assets/abacus-mobile-app2.jpeg";
-import appImg6 from "@/app/assets/abacus-mobile-app3.jpeg";
+import appImg4 from "@/app/assets/Mobile/app4.png";
+import appImg5 from "@/app/assets/Mobile/app5.png";
+import appImg6 from "@/app/assets/Mobile/app6.png";
 
 const SCREENS = [
   { img: appImg1, title: "Everything at a glance", text: "Your accounts and activity, one calm dashboard." },
@@ -77,7 +77,7 @@ function SwipeCard({
         zIndex: N - index,
         translateY: exitY,
       }}
-      className="absolute inset-0 origin-bottom overflow-hidden rounded-[2.25rem] shadow-[0_30px_80px_-20px_rgba(99,102,241,0.35)] ring-1 ring-white/70"
+      className="absolute inset-0 origin-bottom overflow-hidden rounded-[2.25rem] "
     >
       <motion.div style={{ opacity: stackOpacity }} className="absolute inset-0">
         <Image
@@ -90,7 +90,7 @@ function SwipeCard({
         />
       </motion.div>
       {/* glass sheen */}
-      <div className="pointer-events-none absolute inset-0 rounded-[2.25rem] bg-gradient-to-br from-white/25 via-transparent to-transparent" />
+      {/* <div className="pointer-events-none absolute inset-0 rounded-[2.25rem] bg-gradient-to-br from-white/25 via-transparent to-transparent" /> */}
     </motion.div>
   );
 }

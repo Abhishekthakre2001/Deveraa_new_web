@@ -20,18 +20,23 @@ import doorstepImg from "@/app/assets/doorstep-services-web.jpeg";
 import ecommerceImg from "@/app/assets/e-commerce-web.jpeg";
 import tradingAppImg from "@/app/assets/tradingmobileapp.jpeg";
 import videoCallImg from "@/app/assets/viceo-call.jpeg";
+import project1 from "@/app/assets/project/project1.png";
+import project2 from "@/app/assets/project/project2.png";
+import project3 from "@/app/assets/project/project3.png";
+import project4 from "@/app/assets/project/project4.png";
+import project5 from "@/app/assets/project/project5.png";
 
 const EASE = [0.22, 1, 0.36, 1] as const;
 const GRADIENT = "from-cyan-500 via-blue-500 to-violet-500";
 
 // `tags` drive the filter buttons: adjust them to match each project
 const PROJECTS = [
-  { title: "Abacus Web Platform", image: abacusWebImg, category: "Web Application", tags: ["Web"] },
-  { title: "Abacus Mobile App", image: abacusMobileImg, category: "Mobile Application", tags: ["Mobile"] },
-  { title: "Doorstep Services Platform", image: doorstepImg, category: "Web & Mobile Platform", tags: ["Web", "Mobile"] },
-  { title: "E-Commerce Solution", image: ecommerceImg, category: "E-commerce", tags: ["Web"] },
-  { title: "Trading Mobile App", image: tradingAppImg, category: "FinTech", tags: ["Mobile"] },
-  { title: "Video Calling Integration", image: videoCallImg, category: "Communication", tags: ["Web", "Mobile"] },
+  { title: "Abacus Web Platform", image: project5, category: "Web Application", tags: ["Web"] },
+  { title: "Abacus Mobile App", image: project5, category: "Mobile Application", tags: ["Mobile"] },
+  { title: "Doorstep Services Platform", image: project2, category: "Web & Mobile Platform", tags: ["Web", "Mobile"] },
+  { title: "E-Commerce Solution", image: project2, category: "E-commerce", tags: ["Web"] },
+  { title: "Trading Mobile App", image: project4, category: "FinTech", tags: ["Mobile"] },
+  { title: "Video Calling Integration", image: project3, category: "Communication", tags: ["Web", "Mobile"] },
 ];
 
 const FILTERS = ["All", "Web", "Mobile"];
@@ -159,9 +164,9 @@ function ProjectCard({ project, index }: { project: Project; index: number }) {
               {project.tags.join(" · ")}
             </p>
           </div>
-          <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300 group-hover:rotate-45 group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-cyan-500 group-hover:to-violet-500 group-hover:text-white">
+          {/* <span className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full border transition-all duration-300 group-hover:rotate-45 group-hover:border-transparent group-hover:bg-gradient-to-br group-hover:from-cyan-500 group-hover:to-violet-500 group-hover:text-white">
             <ArrowUpRight className="h-4 w-4" />
-          </span>
+          </span> */}
         </div>
       </motion.div>
     </motion.div>

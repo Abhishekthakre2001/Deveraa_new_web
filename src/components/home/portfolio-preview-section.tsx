@@ -5,8 +5,9 @@ import { ArrowRight, ExternalLink } from "lucide-react";
 import Link from "next/link";
 import Image from "next/image";
 
-import eCommerceImg from "@/app/assets/e-commerce-web.jpeg";
-import tradingAppImg from "@/app/assets/tradingmobileapp.jpeg";
+import tradingAppImg from "@/app/assets/project/project4.png";
+import EcommerseImg from "@/app/assets/project/project2.png";
+import tradingApp1Img from "@/app/assets/tradingmobileapp.jpeg";
 import viceoCallImg from "@/app/assets/viceo-call.jpeg";
 
 const PROJECTS = [
@@ -30,7 +31,7 @@ const PROJECTS = [
     title: "Enterprise E-commerce",
     category: "Retail & Logistics",
     description: "Headless e-commerce solution with extreme performance, real-time inventory, and AI-driven recommendations.",
-    image: eCommerceImg,
+    image: EcommerseImg,
     tech: ["Vue.js", "NestJS", "Redis", "Docker"],
     color: "from-cyan-500 to-teal-400"
   }

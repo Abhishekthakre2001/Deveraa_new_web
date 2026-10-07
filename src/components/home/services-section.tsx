@@ -31,7 +31,7 @@ const SERVICES: Service[] = [
     label: "Frontend and backend",
     description: "High-performance web applications built with Next.js, React and modern architecture.",
     icon: Code,
-    image: "/services/web.svg",
+    image: "https://img.magnific.com/free-photo/web-design-concepts-with-blurred-background_1134-82.jpg?semt=ais_hybrid&w=740&q=80",
     stack: ["Next.js", "React", "Node.js"],
   },
   {
@@ -40,7 +40,7 @@ const SERVICES: Service[] = [
     label: "iOS and Android",
     description: "Native-feeling apps for both platforms from a single codebase, built with React Native.",
     icon: Smartphone,
-    image: "/services/mobile.svg",
+    image: "https://img.magnific.com/premium-vector/website-vector-design-template_737924-6273.jpg?semt=ais_hybrid&w=740&q=80",
     stack: ["React Native", "Expo", "Offline mode"],
   },
   {
@@ -49,7 +49,7 @@ const SERVICES: Service[] = [
     label: "Scalable platforms",
     description: "End-to-end product development, from architecture to subscriptions and billing.",
     icon: Cloud,
-    image: "/services/saas.svg",
+    image: "https://img.magnific.com/free-photo/saas-concept-collage_23-2149399295.jpg?semt=ais_hybrid&w=740&q=80",
     stack: ["Multi-tenant", "Billing", "Auth and roles"],
   },
   {
@@ -58,7 +58,7 @@ const SERVICES: Service[] = [
     label: "Machine learning",
     description: "Add large language models and machine learning to your product and daily operations.",
     icon: Cpu,
-    image: "/services/ai.svg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTgldqEEJQXrtGGqogal9fbicFN5e5eHyAVga7uyZdRBL41c0tDa5iUZrNH&s=10",
     stack: ["LLM apps", "Chatbots", "Automation"],
   },
   {
@@ -67,7 +67,7 @@ const SERVICES: Service[] = [
     label: "Product design",
     description: "Clear, intuitive interfaces people enjoy using, designed to turn visitors into customers.",
     icon: PenTool,
-    image: "/services/design.svg",
+    image: "https://img.pikbest.com/wp/202547/app-ui-ux-design-and-coding-development-concept-illustration-vector_12125714.jpg!sw800",
     stack: ["Research", "Prototypes", "Design systems"],
   },
   {
@@ -76,7 +76,7 @@ const SERVICES: Service[] = [
     label: "Infrastructure",
     description: "Scalable infrastructure and automated deployments that keep your product reliable.",
     icon: Database,
-    image: "/services/cloud.svg",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRkA4RV_G7dsTM5dLwRaz5tI4i2w7SS5-NjuFni7cNA3x861Nf7jm6ISIe3&s=10",
     stack: ["AWS", "Docker", "CI/CD"],
   },
 ];
